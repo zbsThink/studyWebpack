@@ -10,7 +10,7 @@ module.exports = {
 
     //webpack提供的一个本地开发的服务器，让你的浏览器监听你的代码的修改，并自动刷新显示修改后的结果
     devServer:{
-        contentBase:"./build",//本地服务器所加载的页面所在的目录
+        contentBase:"./public",//本地服务器所加载的页面所在的目录(当测试HMR功能时把webpack-dev-server关掉)
         historyApiFallback: false,
         inline: true,//实时刷新
         hot: true
