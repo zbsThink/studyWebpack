@@ -3,7 +3,7 @@
   #### 入口起点（entry points）
 
   **单个入口的写法**
-  用法：entry:string|Array<string>
+    用法：entry:string|Array<string>
   ```
   //webpack.config.js
   const config = {
@@ -49,22 +49,6 @@
      }
  }
  ```
- #### 输出（output）
- 在webpack中配置output属性的最低要求是，将它的值设置为一个对象，包括以下两点：
-   * `filename`用于输出文件的文件名
-   * `path`是打包后的文件的存放路径
- 代码如下
- ```
- //webpack.config.js
- const config = {
-   output:{
-      filename:'bundle.js`
-      path:`/home/project/asserts`
-      }
-     };
-  module.exports = config;
-```
-
 **多个入口起点**
   如果使用多个入口起点或者使用像CommonsChunkPlugin这样的插件），则应该使用占位符来确保每个文件具有唯一的名称
 实例如下：
@@ -98,6 +82,22 @@
 _webpack.public_path = myRuntimePublicPath
 //剩余应用程序入口
 ```
+ #### 输出（output）
+ 在webpack中配置output属性的最低要求是，将它的值设置为一个对象，包括以下两点：
+   * `filename`用于输出文件的文件名
+   * `path`是打包后的文件的存放路径
+ 代码如下
+ ```
+ //webpack.config.js
+ const config = {
+   output:{
+      filename:'bundle.js`
+      path:`/home/project/asserts`
+      }
+     };
+  module.exports = config;
+```
+
 #### 插件（plugins)
 
 **用法**
