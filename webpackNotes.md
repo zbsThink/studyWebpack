@@ -95,8 +95,10 @@ _webpack.public_path = myRuntimePublicPath
 //剩余应用程序入口
 ```
 #### 插件（plugins)
+
 **用法**
 由于插件可以携带参数/选项，你必须在webpack配置中，像plugins属性传入new实例
+
 **配置**
 ```
 //webpack.config.js
@@ -128,6 +130,7 @@ webpack的配置是标准的Node.js CommonJS模块，你可以做到以下事情
   * 使用JavaScript控制流表达式，例如`?:`操作符
   * 对常用值使用常量或变量
   * 编写并执行函数来生成部分配置
+  
 **基本配置**
    ```
    //webpack.config.js
@@ -147,7 +150,9 @@ webpack的配置是标准的Node.js CommonJS模块，你可以做到以下事情
   * `val-loader`将代码作为模块执行，并将exports转为js代码
   * `url-loader`像file loader一样工作，但如果文件小于限制，可以返回`data url`
   * `file-loader` 将文件发送到输出文件夹，并返回（相对）URL
-
+#### 依赖图（dependcy graph）
+任何时候，一个文件依赖另一个文件，webpck就把此视为文件之间有依赖关系，这是使得webpck可以接收非代码资源（例如图像或者web字体），并且可以把它们作为依赖，提供给你的程序
+**从入口起点开始，webpack递归地构建一个依赖图，这个依赖图包含着应用程序所需要的每个模块，然后将所有的这些模块打包为少量的bundle-通常只有一个-可由浏览器加载**
 
 
 
