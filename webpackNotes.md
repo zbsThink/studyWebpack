@@ -117,10 +117,38 @@ module:{
 },
 plugins:[
     new webpack.optimize.uglifyJsPlugin(),
-    new HtmlWebpckPlugin({template:'./src/index.html'})
+    new HtmlWebpackPlugin({template:'./src/index.html'})
 ]
 }
 ```
+#### 配置
+webpack的配置是标准的Node.js CommonJS模块，你可以做到以下事情：
+  * 通过`require（....)`导入其他文件
+  * 通过`require(...)`使用npm的工具函数
+  * 使用JavaScript控制流表达式，例如`?:`操作符
+  * 对常用值使用常量或变量
+  * 编写并执行函数来生成部分配置
+**基本配置**
+   ```
+   //webpack.config.js
+   var path = require('path');
+   module.exports = {
+       mode:'development',
+       entry: './fool.js',
+       output: {
+           path: path.resolve(_dirname,'dist')
+           filename: 'foo.bundle.js'
+       }
+   };
+   ```
+#### loaders
+**文件**
+  * `raw-loader`加载文件原始内容（utf-8）
+  * `val-loader`将代码作为模块执行，并将exports转为js代码
+  * `url-loader`像file loader一样工作，但如果文件小于限制，可以返回`data url`
+  * `file-loader` 将文件发送到输出文件夹，并返回（相对）URL
+
+
 
 
 
