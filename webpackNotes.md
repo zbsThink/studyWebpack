@@ -63,7 +63,7 @@
   module.exports = config;
 ```
 **多个入口起点**
-如果使用多个入口起点或者使用像CommonsChunkPlugin这样的插件），则应该使用占位符来确保每个文件具有唯一的名称
+  如果使用多个入口起点或者使用像CommonsChunkPlugin这样的插件），则应该使用占位符来确保每个文件具有唯一的名称
 实例如下：
 ```
 <!-- webpack.config.js -->
