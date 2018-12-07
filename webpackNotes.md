@@ -47,5 +47,17 @@
      }
  }
  ```
- 
+ #### 输出（output）
+ 在webpack中配置output属性的最低要求是，将它的值设置为一个对象，包括以下两点：
+   * `filename`用于输出文件的文件名
+   * `path`是打包后的文件的存放路径
+ 代码如下
+ ```
+ const config = {
+   output:{
+      filename:'bundle.js`
+      path:`/home/project/asserts`
+      }
+     };
+  module.exports = config;
 
