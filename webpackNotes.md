@@ -53,6 +53,7 @@
    * `path`是打包后的文件的存放路径
  代码如下
  ```
+ //webpack.config.js
  const config = {
    output:{
       filename:'bundle.js`
@@ -60,4 +61,66 @@
       }
      };
   module.exports = config;
+```
+**多个入口起点**
+如果使用多个入口起点或者使用像CommonsChunkPlugin这样的插件），则应该使用占位符来确保每个文件具有唯一的名称
+实例如下：
+```
+<!-- webpack.config.js -->
+{
+    entry: {
+        app: './src/app.js',
+        search: '/src/search.js'
+    },
+    output: {
+        filename: '[name].js',
+        path: _dirname + '/dist'
+    }
+}
+//写入硬盘：./dist/app.js,./dist/search.js
+```
+**占位符**
+  * 使用入口名称
+  `filename:"[name].bundle.js"`
+  * 使用内部chunk id
+  `filename:"[id].bundle.js"`
+  * 使用构建过程中唯一的hash生成
+  `filename:"[name].[hash].bundle.js"`
+  * 使用基于每个chunk内容的hash
+  `filename:"[chunkhash].bundle.js"`
+**高级进阶**
+如果你在编译时不知道`publicPath`，你可以先忽略它，并在入口起点动态设置`_webpack_public_path_`
+```
+_webpack.public_path = myRuntimePublicPath
+//剩余应用程序入口
+```
+#### 插件（plugins)
+**用法**
+由于插件可以携带参数/选项，你必须在webpack配置中，像plugins属性传入new实例
+**配置**
+```
+//webpack.config.js
+const HtmlWebpckPlugin  = require('html-webpack-plugin')//通过npm安装
+const webpck = require('webpcak');//访问内置插件
+const path = require('path');
+const config = {
+    entry: './path/to/my/entry/file.js',
+    output:{
+        filename:'my-first-webpck.bundle.js',
+        path:path.resoleve(_dirname,'dist')
+    },
+module:{
+    rules:[{
+        test:/.(js|jsx)$/,
+        use:'babel-loader'
+    }]
+},
+plugins:[
+    new webpack.optimize.uglifyJsPlugin(),
+    new HtmlWebpckPlugin({template:'./src/index.html'})
+]
+}
+```
+
+
 
